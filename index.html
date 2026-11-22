@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AlcoholSoft - Registro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="site-header">
+      <h1>AlcoholSoft</h1>
+      <p>Regístrate y revisa tus datos antes de inscribirte.</p>
+    </header>
+
+    <section id="registrationView" class="card" aria-labelledby="formTitle">
+      <h2 id="formTitle">Formulario de registro</h2>
+      <p class="required-note">* Campo obligatorio</p>
+
+      <!-- novalidate impide que el navegador muestre sus globos de error. -->
+      <form id="registrationForm" novalidate>
+        <div class="field" id="namesField">
+          <label for="names">Nombres <span aria-hidden="true">*</span></label>
+          <input id="names" name="names" type="text" placeholder="Tus nombres" maxlength="80"
+                 autocomplete="given-name" aria-describedby="namesHelp namesError">
+          <p id="namesHelp" class="field-help">Escribe tus nombres completos tal como aparecen en tu documento de identidad. No utilices iniciales ni abreviaturas. Ej.: María de los Ángeles.</p>
+          <p id="namesError" class="field-error" role="alert"></p>
+        </div>
+
+        <div class="field" id="surnamesField">
+          <label for="surnames">Apellidos <span aria-hidden="true">*</span></label>
+          <input id="surnames" name="surnames" type="text" placeholder="Tus apellidos" maxlength="80"
+                 autocomplete="family-name" aria-describedby="surnamesHelp surnamesError">
+          <p id="surnamesHelp" class="field-help">Escribe tus apellidos completos tal como aparecen en tu documento de identidad, respetando su orden y escritura.</p>
+          <p id="surnamesError" class="field-error" role="alert"></p>
+        </div>
+
+        <div class="field" id="emailField">
+          <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="text" inputmode="email" placeholder="usuario@ejemplo.com.co"
+                 maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false"
+                 aria-describedby="emailError">
+          <p id="emailError" class="field-error" role="alert"></p>
+        </div>
+
+        <div class="field" id="phoneField">
+          <label for="phone">Número de celular <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" placeholder="300 000 0000" maxlength="30"
+                 autocomplete="tel" aria-describedby="phoneHelp phoneError">
+          <p id="phoneHelp" class="field-help">Número celular de Colombia de 10 dígitos, comenzando por 3.</p>
+          <p id="phoneError" class="field-error" role="alert"></p>
+        </div>
+
+        <div class="consent-block" id="consentField">
+          <div class="consent-line">
+            <input id="consent" name="consent" type="checkbox" aria-describedby="consentError">
+            <label for="consent">Autorizo a AlcoholSoft para guardar y tratar mis datos personales con la finalidad de gestionar mi inscripción, conforme a la Ley 1581 de 2012 (Habeas Data). *</label>
+          </div>
+          <p id="consentError" class="field-error" role="alert"></p>
+
+          <details class="policy">
+            <summary>Ver política de tratamiento de datos</summary>
+            <p>Solicitamos nombres, apellidos, correo y celular. Los usamos únicamente para gestionar tu inscripción. Son los datos mínimos necesarios. Puedes solicitar conocer, actualizar o borrar tus datos.</p>
+          </details>
+        </div>
+
+        <button class="button primary submit-button" type="submit">Inscribirme</button>
+      </form>
+    </section>
+
+    <section id="successView" class="card success" hidden aria-labelledby="successTitle">
+      <h2 id="successTitle" tabindex="-1">Inscripción simulada exitosa</h2>
+      <p>Tus datos fueron procesados solo dentro de esta demostración.</p>
+      <div id="successSummary" class="summary"></div>
+      <button id="resetButton" class="button primary" type="button">Registrar otra persona</button>
+    </section>
+
+    <footer>
+      <p>Prototipo educativo con datos de prueba. No almacena ni envía datos a ningún sitio; el consentimiento es demostrativo.</p>
+    </footer>
+  </main>
+
+  <!-- Ventana propia; no se usa alert(), confirm() ni los globos del navegador. -->
+  <div id="confirmationModal" class="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSubtitle" tabindex="-1">
+      <h2 id="modalTitle">Confirma tus datos</h2>
+      <p id="modalSubtitle" class="modal-subtitle">Revisa que todo esté bien escrito antes de inscribirte.</p>
+      <div id="confirmationSummary" class="summary"></div>
+      <div class="modal-actions">
+        <button id="confirmButton" class="button primary" type="button">Confirmar e inscribirme</button>
+        <button id="correctButton" class="button secondary" type="button">Corregir datos</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
