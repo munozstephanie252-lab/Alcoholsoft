@@ -3,76 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CarnetVets - Registro</title>
+  <title>Inscripción | CarnetVets</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page">
-    <header class="site-header">
+  <main class="page-shell">
+    <header class="brand">
       <h1>CarnetVets</h1>
-      <p>Regístrate y revisa tus datos antes de inscribirte.</p>
+      <p>Tu inscripción simple y segura.</p>
     </header>
 
-    <section id="registrationView" class="card" aria-labelledby="formTitle">
-      <h2 id="formTitle">Formulario de registro</h2>
+    <section class="card" id="registrationSection" aria-labelledby="formTitle">
+      <h2 id="formTitle">Registro CarnetVets</h2>
       <p class="required-note">* Campo obligatorio</p>
 
-      <!-- novalidate impide que el navegador muestre sus globos de error. -->
       <form id="registrationForm" novalidate>
-        <div class="field" id="namesField">
+        <div class="field">
           <label for="names">Nombres <span aria-hidden="true">*</span></label>
-          <input id="names" name="names" type="text" placeholder="Tus nombres" maxlength="80"
-                 autocomplete="given-name" aria-describedby="namesHelp namesError">
-          <p id="namesHelp" class="field-help">Escribe tus nombres completos tal como aparecen en tu documento de identidad. No utilices iniciales ni abreviaturas. Ej.: María de los Ángeles.</p>
-          <p id="namesError" class="field-error" role="alert"></p>
+          <input id="names" name="names" type="text" placeholder="Tus nombres"
+                 maxlength="80" autocomplete="given-name" required
+                 aria-describedby="namesHelp namesError">
+          <p class="field-help" id="namesHelp">Escribe tus nombres completos tal como aparecen en tu documento de identidad. No utilices iniciales ni abreviaturas. Ej.: María de los Ángeles.</p>
+          <p class="field-error" id="namesError" role="alert" aria-live="polite"></p>
         </div>
 
-        <div class="field" id="surnamesField">
+        <div class="field">
           <label for="surnames">Apellidos <span aria-hidden="true">*</span></label>
-          <input id="surnames" name="surnames" type="text" placeholder="Tus apellidos" maxlength="80"
-                 autocomplete="family-name" aria-describedby="surnamesHelp surnamesError">
-          <p id="surnamesHelp" class="field-help">Escribe tus apellidos completos tal como aparecen en tu documento de identidad, respetando su orden y escritura.</p>
-          <p id="surnamesError" class="field-error" role="alert"></p>
+          <input id="surnames" name="surnames" type="text" placeholder="Tus apellidos"
+                 maxlength="80" autocomplete="family-name" required
+                 aria-describedby="surnamesHelp surnamesError">
+          <p class="field-help" id="surnamesHelp">Escribe tus apellidos completos tal como aparecen en tu documento de identidad, respetando su orden y escritura.</p>
+          <p class="field-error" id="surnamesError" role="alert" aria-live="polite"></p>
         </div>
 
-        <div class="field" id="emailField">
+        <div class="field">
           <label for="email">Correo electrónico <span aria-hidden="true">*</span></label>
-          <input id="email" name="email" type="text" inputmode="email" placeholder="usuario@ejemplo.com.co"
-                 maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false"
+          <input id="email" name="email" type="email" placeholder="usuario@ejemplo.com.co"
+                 maxlength="254" autocomplete="email" required
                  aria-describedby="emailError">
-          <p id="emailError" class="field-error" role="alert"></p>
+          <p class="field-error" id="emailError" role="alert" aria-live="polite"></p>
         </div>
 
-        <div class="field" id="phoneField">
+        <div class="field">
           <label for="phone">Número de celular <span aria-hidden="true">*</span></label>
-          <input id="phone" name="phone" type="tel" placeholder="300 000 0000" maxlength="30"
-                 autocomplete="tel" aria-describedby="phoneHelp phoneError">
-          <p id="phoneHelp" class="field-help">Número celular de Colombia de 10 dígitos, comenzando por 3.</p>
-          <p id="phoneError" class="field-error" role="alert"></p>
+          <input id="phone" name="phone" type="tel" placeholder="300 000 0000"
+                 autocomplete="tel" inputmode="tel" required
+                 aria-describedby="phoneHelp phoneError">
+          <p class="field-help" id="phoneHelp">Número celular de Colombia de 10 dígitos, comenzando por 3.</p>
+          <p class="field-error" id="phoneError" role="alert" aria-live="polite"></p>
         </div>
 
-        <div class="consent-block" id="consentField">
-          <div class="consent-line">
-            <input id="consent" name="consent" type="checkbox" aria-describedby="consentError">
-            <label for="consent">Autorizo a AlcoholSoft para guardar y tratar mis datos personales con la finalidad de gestionar mi inscripción, conforme a la Ley 1581 de 2012 (Habeas Data). *</label>
-          </div>
-          <p id="consentError" class="field-error" role="alert"></p>
+        <div class="consent" id="consentGroup">
+          <label class="consent-line" for="consent">
+            <input id="consent" name="consent" type="checkbox" required
+                   aria-describedby="consentError consentPolicy">
+            <span>Autorizo a CarnetVets para guardar y tratar mis datos personales con la finalidad de gestionar mi inscripción, conforme a la Ley 1581 de 2012 (Habeas Data). <strong>*</strong></span>
+          </label>
+          <p class="field-error" id="consentError" role="alert" aria-live="polite"></p>
 
-          <details class="policy">
+          <details class="policy" id="consentPolicy">
             <summary>Ver política de tratamiento de datos</summary>
-            <p>Solicitamos nombres, apellidos, correo y celular. Los usamos únicamente para gestionar tu inscripción. Son los datos mínimos necesarios. Puedes solicitar conocer, actualizar o borrar tus datos.</p>
+            <p>Pedimos nombres, apellidos, correo y celular.</p>
+            <p>Los usamos para gestionar tu inscripción.</p>
+            <p>Son los datos mínimos necesarios para este proceso.</p>
+            <p>Puedes conocer, actualizar o borrar tus datos.</p>
           </details>
         </div>
 
-        <button class="button primary submit-button" type="submit">Inscribirme</button>
+        <button class="button button-primary" type="submit">Inscribirme</button>
       </form>
     </section>
 
-    <section id="successView" class="card success" hidden aria-labelledby="successTitle">
-      <h2 id="successTitle" tabindex="-1">Inscripción simulada exitosa</h2>
-      <p>Tus datos fueron procesados solo dentro de esta demostración.</p>
-      <div id="successSummary" class="summary"></div>
-      <button id="resetButton" class="button primary" type="button">Registrar otra persona</button>
+    <section class="card success" id="successSection" aria-labelledby="successTitle" hidden>
+      <h2 id="successTitle">Inscripción simulada exitosa</h2>
+      <p>Tus datos fueron revisados y el registro quedó simulado.</p>
+      <div id="successSummary"></div>
+      <button class="button button-primary" type="button" id="resetButton">Registrar otra persona</button>
     </section>
 
     <footer>
@@ -80,15 +86,15 @@
     </footer>
   </main>
 
-  <!-- Ventana propia; no se usa alert(), confirm() ni los globos del navegador. -->
-  <div id="confirmationModal" class="modal-backdrop" hidden>
-    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalSubtitle" tabindex="-1">
+  <div class="modal-backdrop" id="confirmModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true"
+             aria-labelledby="modalTitle" aria-describedby="modalDescription">
       <h2 id="modalTitle">Confirma tus datos</h2>
-      <p id="modalSubtitle" class="modal-subtitle">Revisa que todo esté bien escrito antes de inscribirte.</p>
-      <div id="confirmationSummary" class="summary"></div>
+      <p id="modalDescription">Revisa que todo esté bien escrito antes de inscribirte.</p>
+      <div class="summary" id="modalSummary"></div>
       <div class="modal-actions">
-        <button id="confirmButton" class="button primary" type="button">Confirmar e inscribirme</button>
-        <button id="correctButton" class="button secondary" type="button">Corregir datos</button>
+        <button class="button button-primary" type="button" id="confirmButton">Confirmar e inscribirme</button>
+        <button class="button button-secondary" type="button" id="correctButton">Corregir datos</button>
       </div>
     </section>
   </div>
